@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>點餐狀況 · 2027 春水堂點餐</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand-mark">春水堂</span>
+      <span class="brand-sub">2027 班級手搖飲點餐</span>
+    </div>
+    <nav class="site-nav">
+      <a class="nav-link" href="index.html">點餐</a>
+      <a class="nav-link active" href="status.html">點餐狀況</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="row">
+      <div class="block">
+        <h2 class="block-title">目前點餐狀況</h2>
+
+        <div class="status-toolbar">
+          <span class="status-meta" id="statusMeta">載入中…</span>
+          <button type="button" class="btn btn-ghost" id="refreshBtn">重新整理</button>
+        </div>
+
+        <div class="summary-cards" id="summaryCards"></div>
+
+        <div class="status-table-wrap">
+          <table class="status-table">
+            <thead>
+              <tr>
+                <th>時間</th>
+                <th>姓名</th>
+                <th>餐點</th>
+                <th class="num">杯數</th>
+                <th class="num">金額</th>
+              </tr>
+            </thead>
+            <tbody id="statusBody">
+              <tr><td colspan="5" class="status-empty">載入中…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>春水堂人文茶館 · 2027 班級點餐系統</span>
+  </footer>
+
+  <script src="assets/config.js"></script>
+  <script src="assets/status.js"></script>
+</body>
+</html>

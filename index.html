@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2027 春水堂點餐</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand-mark">春水堂</span>
+      <span class="brand-sub">2027 班級手搖飲點餐</span>
+    </div>
+    <nav class="site-nav">
+      <a class="nav-link active" href="index.html">點餐</a>
+      <a class="nav-link" href="status.html">點餐狀況</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <!-- 第 1 列：菜單 -->
+    <section class="row row-menu" aria-label="菜單">
+      <div class="block block-menu">
+        <h2 class="block-title">菜單</h2>
+        <div class="menu-frame">
+          <img src="assets/menu.jpg" alt="春水堂菜單" class="menu-img" />
+        </div>
+      </div>
+    </section>
+
+    <!-- 第 2 列：表單 | 價格 -->
+    <section class="row row-order" aria-label="點餐表單與價格">
+      <div class="block block-form">
+        <h2 class="block-title">點餐表單</h2>
+
+        <div class="name-field">
+          <label for="customerName">輸入姓名 <span class="required">*</span></label>
+          <input id="customerName" type="text" placeholder="請輸入你的姓名" autocomplete="name" maxlength="20" />
+        </div>
+
+        <div class="form-toolbar">
+          <div class="category-tabs" id="categoryTabs"></div>
+          <div class="toolbar-actions">
+            <button type="button" class="btn btn-ghost" id="expandAll">全部展開</button>
+            <button type="button" class="btn btn-ghost" id="collapseAll">全部收合</button>
+          </div>
+        </div>
+
+        <form id="orderForm" novalidate>
+          <div id="menuForm" class="menu-form"></div>
+          <div class="form-footer">
+            <button type="submit" class="btn btn-primary" id="submitBtn">送出訂單</button>
+            <button type="button" class="btn btn-ghost" id="resetBtn">清除全部</button>
+            <span class="form-msg" id="formMsg" role="status"></span>
+          </div>
+        </form>
+      </div>
+
+      <aside class="block block-price" aria-label="價格">
+        <h2 class="block-title">價格</h2>
+        <div class="price-panel">
+          <div class="price-summary">
+            <span class="price-label">目前總金額</span>
+            <span class="price-total" id="priceTotal">$0</span>
+          </div>
+          <div class="price-count" id="priceCount">已選 0 杯</div>
+          <ul class="price-list" id="priceList">
+            <li class="price-empty">尚未選擇餐點</li>
+          </ul>
+          <div class="price-note">
+            內用酌收 10% 服務清潔費；飲品平日內用／外帶中杯均 85 折（例假日除外）。
+          </div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>春水堂人文茶館 · 2027 班級點餐系統</span>
+  </footer>
+
+  <script src="assets/config.js"></script>
+  <script src="assets/menu-data.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
