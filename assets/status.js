@@ -15,8 +15,12 @@
 
   function fmtTime(v) {
     if (!v) return '';
+    const s = String(v);
+    // 已是 yyyy/MM/dd HH:mm(:ss) 格式，直接顯示到分鐘
+    const m = s.match(/^(\d{4})\/(\d{2})\/(\d{2})[ T](\d{2}):(\d{2})/);
+    if (m) return `${m[1]}/${m[2]}/${m[3]} ${m[4]}:${m[5]}`;
     const d = new Date(v);
-    if (isNaN(d.getTime())) return String(v);
+    if (isNaN(d.getTime())) return s;
     const p = (n) => String(n).padStart(2, '0');
     return `${d.getFullYear()}/${p(d.getMonth() + 1)}/${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}`;
   }

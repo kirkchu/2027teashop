@@ -9,10 +9,14 @@
  */
 
 var SHEET_NAME = '2027手搖飲點餐記錄';
+var TIME_ZONE = 'Asia/Taipei';
 var HEADERS = ['時間', '姓名', '餐點明細', '杯數', '總金額', '明細JSON'];
 
 function getSheet_() {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
+  if (ss.getSpreadsheetTimeZone() !== TIME_ZONE) {
+    ss.setSpreadsheetTimeZone(TIME_ZONE);
+  }
   var sheet = ss.getSheetByName(SHEET_NAME);
   if (!sheet) {
     sheet = ss.insertSheet(SHEET_NAME);
@@ -54,7 +58,7 @@ function doPost(e) {
 
     var sheet = getSheet_();
     sheet.appendRow([
-      new Date(),
+      Utilities.formatDate(new Date(), TIME_ZONE, 'yyyy/MM/dd HH:mm:ss'),
       name,
       itemsText,
       cups,
@@ -83,7 +87,9 @@ function doGet(e) {
         var r = values[i];
         if (!r[1]) continue;
         orders.push({
-          time: r[0] instanceof Date ? r[0].toISOString() : String(r[0]),
+          time: r[0] instanceof Date
+            ? Utilities.formatDate(r[0], TIME_ZONE, 'yyyy/MM/dd HH:mm:ss')
+            : String(r[0]),
           name: String(r[1]),
           items: String(r[2]),
           cups: Number(r[3]) || 0,
